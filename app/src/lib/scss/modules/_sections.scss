@@ -1,0 +1,38 @@
+/*
+# Sections
+** section blocks **
+*/
+
+// default section
+// -------------------------------------------------------------------------------------------
+
+// default
+.section {
+	margin: $base-gutter*5 auto;
+
+	// common
+	&,
+	.section__padder {
+		display: block;
+		position: relative;
+		width: auto;
+		height: auto;
+		padding: 0;
+		overflow: hidden;
+	}
+
+	// padder
+	.section__padder {
+		max-width: $max-content-width;
+		margin: 0 auto;
+		padding: 0 $base-gutter;
+	}
+}
+
+// small desktop and lower
+@media only screen and (max-width:$screen-max-width-step1) {
+	// smaller section gaps
+	.section {
+		margin: $base-gutter auto;
+	}
+}

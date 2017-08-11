@@ -1,0 +1,31 @@
+/*
+# Typography
+** basic type module styles **
+*/
+
+// global
+// -------------------------------------------------------------------------------------------
+
+body {
+	font-family: $font-sans-serif;
+	font-size: $font-root-size;
+	font-weight: 400;
+}
+
+
+// headings
+// -------------------------------------------------------------------------------------------
+
+// default
+h1 {
+	font-size: 36px;
+	font-weight: 600;
+	line-height: 1.5em;
+}
+
+// mobile
+@media only screen and (max-width:$screen-max-width-step3) {
+	h1 {
+		font-size: 24px;
+	}
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<!-- SEO -->
+	<meta name="keywords" content="women, tops">
+	<meta name="description" content="A gallery of women's tops">
+	<meta name="author" content="Johnny Xu">
+	<!-- IE -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!-- DEVICE -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
+	<!-- TITLE -->
+	<title>DT Test</title>
+	<!-- CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+	<link rel="stylesheet" href="https://unpkg.com/angular@1.4.14/angular-csp.css">
+	<link rel="stylesheet" href="lib/css/app.css">
+	<!-- JS -->
+	<script src="https://unpkg.com/angular@1.4.14/angular.min.js"></script>
+</head>
+<body>
+	<!-- CONTAINER -->
+	<div id="container" ng-app="app">
+		<div class="section" id="section-products">
+			<div class="section__padder"
+				ng-include="'lib/partials/products.html'">
+			</div>
+		</div>
+	</div><!-- /CONTAINER -->
+
+	<!-- JS:APP -->
+	<script src="lib/js/app.min.js"></script>
+</body>
+</html>

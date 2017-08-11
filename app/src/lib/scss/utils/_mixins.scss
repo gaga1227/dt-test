@@ -1,0 +1,247 @@
+/*
+# mixins
+** common utils mixins **
+*/
+
+// Utils
+// -------------------------------------------------------------------------------------------
+
+// Image Background Text Replacement
+@mixin ir() {
+	border: 0!important;
+	font: 0/0 a!important;
+	text-shadow: none!important;
+	color: transparent!important;
+}
+
+// Clear fix
+@mixin cfix() {
+	&:before,
+	&:after {
+		content:" "; // avoid opera space bug
+		display:table; // contain child element top margin
+	}
+	&:after {
+		clear:both;
+	}
+	*zoom:1; // For IE 6/7 only
+}
+
+// Text Truncate with elipsis
+@mixin text-truncate() {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+// Text Truncate with elipsis for multiline block
+// Only supported by webkit browsers
+@mixin text-block-truncate($lines) {
+	@if($lines != null) {
+		display: -webkit-box;
+		-webkit-line-clamp: $lines;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+}
+
+// CSS3 properties
+// -------------------------------------------------------------------------------------------
+
+// Box-sizing
+@mixin box-sizing($sizing) {
+	@if($sizing != null) {
+		-webkit-box-sizing: $sizing;
+		box-sizing: $sizing;
+	}
+	@else {
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+}
+
+// Transform combined mixin
+@mixin transform ($transforms) {
+	@if($transforms != null) {
+		-webkit-transform: $transforms;
+		-ms-transform: $transforms;
+		transform: $transforms;
+	}
+}
+
+// Transform origin
+@mixin transform-origin ($origin) {
+	@if($origin != null) {
+		-webkit-transform-origin: $origin;
+		-ms-transform-origin: $origin;
+		transform-origin: $origin;
+	}
+}
+
+// Transitions mixins
+@mixin transition($transition-property: all, $transition-time: .25s, $method: ease-in-out) {
+	-webkit-transition: $transition-property $transition-time $method;
+	transition: $transition-property $transition-time $method;
+}
+
+// transition-property
+@mixin transition-property($transition-property...) {
+	@if ($transition-property != null) {
+		-webkit-transition-property: $transition-property;
+		transition-property: $transition-property;
+	}
+}
+
+// transition-duration
+@mixin transition-duration($transition-duration: .25s) {
+	-webkit-transition-duration: $transition-duration;
+	transition-duration: $transition-duration;
+}
+
+// transition-timing-function
+@mixin transition-timing-function($transition-timing-function: ease) {
+	-webkit-transition-timing-function: $transition-timing-function;
+	transition-timing-function: $transition-timing-function;
+}
+
+// transition-delay
+@mixin transition-delay($transition-delay: .1s) {
+	-webkit-transition-delay: $transition-delay;
+	transition-delay: $transition-delay;
+}
+
+// perspective
+@mixin perspective ($val: 400px) {
+	-webkit-perspective: $val;
+	perspective: $val;
+}
+
+// perspective-origin
+@mixin perspective-origin ($h: 50%, $v: 50%) {
+	-webkit-perspective-origin: $h $v;
+	perspective-origin: $h $v;
+}
+
+// backface-visibility
+@mixin backface-visibility ($val: hidden) {
+	-webkit-backface-visibility: $val;
+	backface-visibility: $val;
+}
+
+// keyframe animation
+@mixin animation ($anim, $duration: 1s, $timing: ease-in-out, $fillmode: both) {
+	@if($anim != null) {
+		-webkit-animation-name: $anim;
+		animation-name: $anim;
+		-webkit-animation-duration: $duration;
+		animation-duration: $duration;
+		-webkit-animation-timing-function: $timing;
+		animation-timing-function: $timing;
+		-webkit-animation-fill-mode: $fillmode;
+		animation-fill-mode: $fillmode;
+	}
+}
+
+// Will change
+// INFO: https://dev.opera.com/articles/css-will-change-property/
+@mixin will-change($properties...) {
+	@if ($properties != null) {
+		will-change: $properties;
+	}
+}
+
+// flex mixins
+// -------------------------------------------------------------------------------------------
+
+// Flexbox Containers
+@mixin flexbox {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flexbox;
+	display: flex;
+}
+
+// Flexbox "Flex" (shorthand)
+@mixin flex($fg: 1, $fs: null, $fb: null) {
+	// Set a variable to be used by box-flex properties
+	$fg-boxflex: $fg;
+
+	// Box-Flex only supports a flex-grow value so let's grab the
+	// first item in the list and just return that.
+	@if type-of($fg) == 'list' {
+		$fg-boxflex: nth($fg, 1);
+	}
+
+	-webkit-box-flex: $fg-boxflex;
+	-webkit-flex: $fg $fs $fb;
+	-moz-box-flex: $fg-boxflex;
+	-moz-flex: $fg $fs $fb;
+	-ms-flex: $fg $fs $fb;
+	flex: $fg $fs $fb;
+}
+
+// Flexbox Grow
+@mixin flex-grow($int: 0) {
+	-webkit-box-flex: $int;
+	-webkit-flex-grow: $int;
+	-moz-flex-grow: $int;
+	-ms-flex-positive: $int;
+	flex-grow: $int;
+}
+
+// Flexbox Shrink
+@mixin flex-shrink($int: 1) {
+	-webkit-flex-shrink: $int;
+	-moz-flex-shrink: $int;
+	-ms-flex-negative: $int;
+	flex-shrink: $int;
+}
+
+// Flexbox Basis
+@mixin flex-basis($value: auto) {
+	-webkit-flex-basis: $value;
+	-moz-flex-basis: $value;
+	-ms-flex-preferred-size: $value;
+	flex-basis: $value;
+}
+
+// Flexbox Justify Content
+@mixin justify-content($value: flex-start) {
+	@if $value == flex-start {
+		-webkit-box-pack: start;
+		-ms-flex-pack: start;
+	} @else if $value == flex-end {
+		-webkit-box-pack: end;
+		-ms-flex-pack: end;
+	} @else if $value == space-between {
+		-webkit-box-pack: justify;
+		-ms-flex-pack: justify;
+	} @else if $value == space-around {
+		-ms-flex-pack: distribute;
+	} @else {
+		-webkit-box-pack: $value;
+		-ms-flex-pack: $value;
+	}
+	-webkit-justify-content: $value;
+	-moz-justify-content: $value;
+	justify-content: $value;
+}
+
+// Flexbox Align Items
+@mixin align-items($value: stretch) {
+	@if $value == flex-start {
+		-webkit-box-align: start;
+		-ms-flex-align: start;
+	} @else if $value == flex-end {
+		-webkit-box-align: end;
+		-ms-flex-align: end;
+	} @else {
+		-webkit-box-align: $value;
+		-ms-flex-align: $value;
+	}
+	-webkit-align-items: $value;
+	-moz-align-items: $value;
+	align-items: $value;
+}

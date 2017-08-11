@@ -1,0 +1,41 @@
+/*
+# Main Settings
+*/
+
+// colors
+// -------------------------------------------------------------------------------------------
+
+// text
+$text-dark: #333333;
+$text-white: #FFFFFF;
+
+// background
+$bg-white: #FFFFFF;
+$bg-light-blue: #DEF1F4;
+
+// accents
+$accent-red: #CC3333;
+$accent-green: #009900;
+
+
+// Typography
+// -------------------------------------------------------------------------------------------
+
+$font-sans-serif: Helvetica, Arial, sans-serif;
+$font-root-size: 16px;
+
+
+// Layout
+// -------------------------------------------------------------------------------------------
+
+// gutters
+$base-gutter: 10px;
+
+// content width limits
+$max-content-width: 1320px;
+$min-content-width: 320px;
+
+// breakpoints
+$screen-max-width-step1: 1024px;
+$screen-max-width-step2: 800px;
+$screen-max-width-step3: 600px;
